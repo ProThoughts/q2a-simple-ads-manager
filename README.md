@@ -3,7 +3,7 @@ Q2A Simple Ads Manager
 VERSION 1.0
 -----------
 
-This plugin will allow to add advertisements in the below listed spots. You can use Google adsense or any HTML ad code. 
+This plugin will allow you to add advertisements in the below listed spots. You can use Google adsense or any HTML ad code. 
 
 Features
 --------

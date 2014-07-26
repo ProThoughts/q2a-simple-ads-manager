@@ -1,7 +1,9 @@
 Q2A Simple Ads Manager
 ======================
-VERSION 1.0
------------
+
+Plugin Version
+--------------
+- v1.0
 
 This plugin will allow you to add advertisements in the below listed spots. You can use Google adsense or any HTML ad code. 
 
@@ -19,6 +21,10 @@ Installation Guide
 - Place directory called `q2a-simple-ads-manager` in qa-plugin folder.
 - Done
 
+Minimum Question2Answer Version Required
+----------------------------------------
+- v1.6
+
 Admin Guide
 -----------
 - Login with admin id.
@@ -27,5 +33,5 @@ Admin Guide
 - Click on "options" to enable ads spots and place ad code.
 
 Demo
------------
+----
 - Plugin is active on http://q2a-dev.prothoughts.com

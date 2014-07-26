@@ -3,35 +3,36 @@
 
 class qa_html_theme_layer extends qa_html_theme_base {
 
+        //ad after question, just before answers
         function q_view()
         {
             qa_html_theme_base::q_view();
 
-            //ad after question, just before answers
-			if (qa_opt('q2a_enable_admanager')) {
-                   if (qa_opt('enable_html_ad_code')) {
-						
-						if (qa_opt('q2a_ad_after_question')) {
-                            
-                            $this->output(qa_opt('q2a_html_ad_codebox'));
+			if (qa_opt('pt_q2a_enable_admanager')) 
+			{
+                   if (qa_opt('pt_enable_html_ad_code')) 
+				   {
+						if (qa_opt('pt_q2a_ad_after_question')) 
+						{
+                            $this->output(qa_opt('pt_q2a_html_ad_codebox'));
 						}
-                            
                    }                     
 			}
         }
 		// End of q_view()
 		
+        //ad after menu navigation bar, just after horizontal line.		
         function header()
         {
             qa_html_theme_base::header();
 
-            //ad after menu navigation bar, just after horizontal line.
-			if (qa_opt('q2a_enable_admanager')) {
-                   if (qa_opt('enable_html_ad_code')) {
-						
-						if (qa_opt('q2a_ad_after_menu_bar')) {
-                            
-                            $this->output(qa_opt('q2a_html_ad_codebox'));
+			if (qa_opt('pt_q2a_enable_admanager')) 
+			{
+                   if (qa_opt('pt_enable_html_ad_code')) 
+				   {
+						if (qa_opt('pt_q2a_ad_after_menu_bar')) 
+						{
+                            $this->output(qa_opt('pt_q2a_html_ad_codebox'));
 						}
                             
                    }                     
@@ -39,36 +40,37 @@ class qa_html_theme_layer extends qa_html_theme_base {
         }
 		// End of header()
 		
+        //ad after all answers, just before related questions		
         function a_list($a_list)
         {
             qa_html_theme_base::a_list($a_list);
 
-            //ad after all answers, just before related questions
-			if (qa_opt('q2a_enable_admanager')) {
-                   if (qa_opt('enable_html_ad_code')) {
-						
-						if (qa_opt('q2a_ad_after_all_answers')) {
-                            
-                            $this->output(qa_opt('q2a_html_ad_codebox'));
+			if (qa_opt('pt_q2a_enable_admanager')) 
+			{
+                   if (qa_opt('pt_enable_html_ad_code')) 
+				   {
+						if (qa_opt('pt_q2a_ad_after_all_answers')) 
+						{
+                            $this->output(qa_opt('pt_q2a_html_ad_codebox'));
 						}
-                            
                    }                     
 			}
         }
 		// end of a_list()
 
+		//ad after all questions
         function q_list_and_form($q_list)
         {
             
             qa_html_theme_base::q_list_and_form($q_list);
 
-            //ad after all questions
-			if (qa_opt('q2a_enable_admanager')) {
-                   if (qa_opt('enable_html_ad_code')) {
-						
-						if (qa_opt('q2a_ad_after_all_questions')) {
-                            
-                            $this->output(qa_opt('q2a_html_ad_codebox'));
+			if (qa_opt('pt_q2a_enable_admanager')) 
+			{
+                   if (qa_opt('pt_enable_html_ad_code')) 
+				   {
+						if (qa_opt('pt_q2a_ad_after_all_questions')) 
+						{
+                            $this->output(qa_opt('pt_q2a_html_ad_codebox'));
 						}
                             
                    }                     
@@ -76,7 +78,6 @@ class qa_html_theme_layer extends qa_html_theme_base {
 
         }
 		// end of q_list_and_form()		
-		
 }
 /*
 	Omit PHP closing tag to help avoid accidental output

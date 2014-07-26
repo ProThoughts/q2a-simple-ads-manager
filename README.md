@@ -25,3 +25,7 @@ Admin Guide
 - Go to Admin > Plugins page.
 - Scroll down to "Simple Ads Manager" in plugin list.
 - Click on "options" to enable ads spots and place ad code.
+
+Demo
+-----------
+- Plugin is active on http://q2a-dev.prothoughts.com

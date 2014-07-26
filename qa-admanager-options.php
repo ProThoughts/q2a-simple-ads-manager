@@ -24,7 +24,7 @@ class qa_simple_admanager {
 			case 'q2a_ad_after_all_answers':
                 return true;
 
-			case 'q2a_ad_after_related_questions':
+			case 'q2a_ad_after_all_questions':
                 return true;
             
 			default:
@@ -43,7 +43,7 @@ class qa_simple_admanager {
 			qa_opt('q2a_ad_after_question',(bool)qa_post_text('q2a_ad_after_question'));
 			qa_opt('q2a_ad_after_menu_bar',(bool)qa_post_text('q2a_ad_after_menu_bar'));
 			qa_opt('q2a_ad_after_all_answers',(bool)qa_post_text('q2a_ad_after_all_answers'));
-			qa_opt('q2a_ad_after_related_questions',(bool)qa_post_text('q2a_ad_after_related_questions'));
+			qa_opt('q2a_ad_after_all_questions',(bool)qa_post_text('q2a_ad_after_all_questions'));
 			qa_opt('enable_html_ad_code',(bool)qa_post_text('enable_html_ad_code'));
 			qa_opt('q2a_html_ad_codebox', qa_post_text('q2a_html_ad_code_field'));            
 
@@ -87,9 +87,9 @@ class qa_simple_admanager {
 		);
 		
 		$fields[] = array(
-			'label' => 'Ad after Related Questions',
-			'tags' => 'NAME="q2a_ad_after_related_questions"',
-			'value' => qa_opt('q2a_ad_after_related_questions'),
+			'label' => 'Ad after All Questions',
+			'tags' => 'NAME="q2a_ad_after_all_questions"',
+			'value' => qa_opt('q2a_ad_after_all_questions'),
 			'type' => 'checkbox',
 		);
         

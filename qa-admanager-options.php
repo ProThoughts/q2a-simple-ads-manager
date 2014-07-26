@@ -14,7 +14,6 @@ class pt_qa_simple_admanager {
 		$ok = null;
 		if (qa_clicked('np_q_save_button')) 
 		{
-			qa_opt('pt_q2a_enable_admanager',(bool)qa_post_text('pt_q2a_enable_admanager'));            
 			qa_opt('pt_q2a_ad_after_question',(bool)qa_post_text('pt_q2a_ad_after_question'));
 			qa_opt('pt_q2a_ad_after_menu_bar',(bool)qa_post_text('pt_q2a_ad_after_menu_bar'));
 			qa_opt('pt_q2a_ad_after_all_answers',(bool)qa_post_text('pt_q2a_ad_after_all_answers'));
@@ -35,9 +34,18 @@ class pt_qa_simple_admanager {
 
 		$fields[] = array(
 			'label' => 'Enable admanager',
-			'tags' => 'NAME="pt_q2a_enable_admanager"',
-			'value' => qa_opt('pt_q2a_enable_admanager'),
 			'type' => 'checkbox',
+			'value' => qa_opt('pt_enable_html_ad_code'),
+			'tags' => 'NAME="pt_enable_html_ad_code" ID="pt_enable_html_ad_code"',
+		);
+		
+		$fields[] = array(
+			'id' => 'pt_q2a_html_ad_code_display',
+			'label' => 'Paste HTML Ad Code in this box',
+			'type' => 'textarea',
+			'value' => qa_opt('pt_q2a_html_ad_codebox'),
+			'tags' => 'NAME="pt_q2a_html_ad_code_field"',
+            'rows' => 3,
 		);
         
 		$fields[] = array(
@@ -66,22 +74,6 @@ class pt_qa_simple_admanager {
 			'tags' => 'NAME="pt_q2a_ad_after_all_questions"',
 			'value' => qa_opt('pt_q2a_ad_after_all_questions'),
 			'type' => 'checkbox',
-		);
-        
-		$fields[] = array(
-			'label' => 'Ad code',
-			'type' => 'checkbox',
-			'value' => qa_opt('pt_enable_html_ad_code'),
-			'tags' => 'NAME="pt_enable_html_ad_code" ID="pt_enable_html_ad_code"',
-		);
-		
-		$fields[] = array(
-			'id' => 'pt_q2a_html_ad_code_display',
-			'label' => 'Paste HTML Ad Code in this box',
-			'type' => 'textarea',
-			'value' => qa_opt('pt_q2a_html_ad_codebox'),
-			'tags' => 'NAME="pt_q2a_html_ad_code_field"',
-            'rows' => 3,
 		);
         
 

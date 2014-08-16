@@ -4,9 +4,9 @@
 class qa_html_theme_layer extends qa_html_theme_base {
 
         //ad after question, just before answers
-        function q_view()
+        function q_view($q_view)
         {
-			  qa_html_theme_base::q_view();
+			  qa_html_theme_base::q_view($q_view);
 
 			  if (qa_opt('pt_enable_html_ad_code') && qa_opt('pt_q2a_ad_after_question')) 
 			   {

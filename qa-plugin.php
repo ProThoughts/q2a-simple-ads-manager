@@ -4,8 +4,8 @@
 	Plugin Name: Simple Ads Manager
 	Plugin URI: https://github.com/ProThoughts/q2a-simple-ads-manager
 	Plugin Description: Manage HTML ads
-	Plugin Version: 1.0
-	Plugin Date: 2014-07-25
+	Plugin Version: 1.1
+	Plugin Date: 2014-08-21
 	Plugin Author: ProThoughts
 	Plugin Author URI: http://www.ProThoughts.com/
 	Plugin License: GPLv2

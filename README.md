@@ -18,7 +18,7 @@ You can place ads at below 5 spots
 
 Installation Guide
 ------------------
-- Extrat zip file.
+- Extract zip file.
 - Place directory called `q2a-simple-ads-manager` in qa-plugin folder.
 - Done
 
@@ -48,7 +48,7 @@ Change Log
 
 About Question2Answer(Q2A)
 ---------------------
-Question2Answer is a free and open source platform writtern in PHP/MySQL for Q&A sites. For more information, visit [http://www.question2answer.org/](http://www.question2answer.org/)
+Question2Answer is a free and open source platform written in PHP/MySQL for Q&A sites. For more information, visit [http://www.question2answer.org/](http://www.question2answer.org/)
 
 License
 -------

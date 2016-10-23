@@ -24,7 +24,7 @@ Installation Guide
 
 Minimum Question2Answer Version Required
 ----------------------------------------
-- v1.6 (works with v1.7.4)
+- v1.6 (works with v1.7.4, v1.8)
 
 Admin Guide
 -----------

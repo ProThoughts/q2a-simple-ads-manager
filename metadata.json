@@ -1,0 +1,12 @@
+{
+	"name": "Simple Ads Manager",
+	"uri": "https://github.com/ProThoughts/q2a-simple-ads-manager",
+	"description": "Manage HTML ads",
+	"version": "1.0",
+	"date": "2014-08-21",
+	"author": "ProThoughts",
+	"author_uri": "http://prothoughts.com",
+	"license": "GPLv2",
+	"update_uri": "https://raw.githubusercontent.com/ProThoughts/q2a-simple-ads-manager/master/metadata.json",
+	"min_q2a": "1.6"
+}

@@ -12,7 +12,7 @@ class pt_qa_simple_admanager {
 	{
 
 		$ok = null;
-		if (qa_clicked('np_q_save_button')) 
+		if (qa_clicked('pt_q2a_simple_ads_manager_save_button')) 
 		{
 			qa_opt('pt_q2a_ad_after_question',(bool)qa_post_text('pt_q2a_ad_after_question'));
 			qa_opt('pt_q2a_ad_after_question_codebox', qa_post_text('pt_q2a_ad_after_question_code_field'));   
@@ -136,7 +136,7 @@ class pt_qa_simple_admanager {
 			'buttons' => array(
 				array(
 				'label' => qa_lang_html('main/save_button'),
-				'tags' => 'NAME="np_q_save_button"',
+				'tags' => 'NAME="pt_q2a_simple_ads_manager_save_button"',
 				),
 			),
 		);

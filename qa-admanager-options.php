@@ -16,7 +16,7 @@ class pt_qa_simple_admanager {
 			case 'pt_q2a_ad_after_menu_bar_level':
 			case 'pt_q2a_ad_after_all_answers_level':
 			case 'pt_q2a_ad_after_all_questions_level':
-			case 'pt_q2a_ad_after_sidebar_level':
+			case 'pt_q2a_ad_sidebar_level':
                                 return QA_USER_LEVEL_SUPER+1;
 			case 'pt_q2a_ad_hideaskpage': return 1;
                         default:

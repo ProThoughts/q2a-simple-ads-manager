@@ -43,6 +43,9 @@ class pt_qa_simple_admanager {
 			qa_opt('pt_q2a_ad_after_all_answers',(bool)qa_post_text('pt_q2a_ad_after_all_answers'));
 			qa_opt('pt_q2a_ad_after_all_answers_codebox', qa_post_text('pt_q2a_ad_after_all_answers_code_field'));   
 			qa_opt('pt_q2a_ad_after_all_answers_level',qa_post_text('pt_q2a_ad_after_all_answers_level'));
+			qa_opt('pt_q2a_ad_after_first_answer',(bool)qa_post_text('pt_q2a_ad_after_first_answer'));
+			qa_opt('pt_q2a_ad_after_first_answer_codebox', qa_post_text('pt_q2a_ad_after_first_answer_code_field'));   
+			qa_opt('pt_q2a_ad_after_first_answer_level',qa_post_text('pt_q2a_ad_after_first_answer_level'));
 			
 			qa_opt('pt_q2a_ad_after_all_questions',(bool)qa_post_text('pt_q2a_ad_after_all_questions'));
 			qa_opt('pt_q2a_ad_after_all_questions_codebox', qa_post_text('pt_q2a_ad_after_all_questions_code_field'));   
@@ -151,6 +154,28 @@ class pt_qa_simple_admanager {
 			'type' => 'select',
 			'value' => @$showoptions[qa_opt('pt_q2a_ad_after_all_answers_level')],
 			'tags' => 'NAME="pt_q2a_ad_after_all_answers_level" ID="pt_q2a_ad_after_all_answers_level"',
+			'options' => $showoptions
+		);
+		$fields[] = array(
+			'label' => 'Ad after First Answer',
+			'type' => 'checkbox',
+			'value' => qa_opt('pt_q2a_ad_after_first_answer'),
+			'tags' => 'NAME="pt_q2a_ad_after_first_answer" ID="pt_q2a_ad_after_first_answer"',
+		);
+		
+		$fields[] = array(
+			'id' => 'pt_q2a_ad_after_first_answer_code_display',
+			'label' => 'Paste HTML Ad Code in this box(try 728x90 banner ad)',
+			'type' => 'textarea',
+			'value' => qa_opt('pt_q2a_ad_after_first_answer_codebox'),
+			'tags' => 'NAME="pt_q2a_ad_after_first_answer_code_field"',
+            'rows' => 2,
+		);		
+		$fields[] = array(
+			'label' => 'Hide This Ad for the below User Levels and Above',
+			'type' => 'select',
+			'value' => @$showoptions[qa_opt('pt_q2a_ad_after_first_answer_level')],
+			'tags' => 'NAME="pt_q2a_ad_after_first_answer_level" ID="pt_q2a_ad_first_answer_level"',
 			'options' => $showoptions
 		);
 		

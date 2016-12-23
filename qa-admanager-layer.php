@@ -29,6 +29,22 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	}
 	// End of header()
 
+	function a_list_items($a_items)
+	{
+		$first = true;
+		foreach ($a_items as $a_item)
+		{
+			$this->a_list_item($a_item);
+			if ($first && qa_opt('pt_q2a_ad_after_first_answer') && $user_level < qa_opt('pt_q2a_ad_after_first_answer_level')) 
+			{
+				$first = false;
+				$this->output(qa_opt('pt_q2a_ad_after_first_answer_codebox'));
+			}                     
+		}
+	}
+
+
+
 	//ad after all answers, just before related questions		
 	function a_list($a_list)
 	{

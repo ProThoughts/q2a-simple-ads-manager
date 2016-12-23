@@ -35,7 +35,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 		foreach ($a_items as $a_item)
 		{
 			$this->a_list_item($a_item);
-			if ($first && qa_opt('pt_q2a_ad_after_first_answer') && $user_level < qa_opt('pt_q2a_ad_after_first_answer_level')) 
+			if ($first && qa_opt('pt_q2a_ad_after_first_answer') && $user_level < qa_opt('pt_q2a_ad_after_first_answer_level') && (count($a_items) > 1 || (!qa_opt('pt_q2a_ad_after_all_answers') || $user_level >= qa_opt('pt_q2a_ad_after_all_answers_level')))) 
 			{
 				$first = false;
 				$this->output(qa_opt('pt_q2a_ad_after_first_answer_codebox'));

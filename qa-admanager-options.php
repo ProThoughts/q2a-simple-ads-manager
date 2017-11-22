@@ -55,6 +55,12 @@ class pt_qa_simple_admanager {
 			qa_opt('pt_q2a_ad_sidebar_codebox', qa_post_text('pt_q2a_ad_sidebar_code_field'));   
 			qa_opt('pt_q2a_ad_sidebar_level',qa_post_text('pt_q2a_ad_sidebar_level'));
 			
+			
+			qa_opt('pt_q2a_ad_leftside',(bool)qa_post_text('pt_q2a_ad_leftside'));
+			qa_opt('pt_q2a_ad_leftside_codebox', qa_post_text('pt_q2a_ad_leftside_code_field'));   
+			qa_opt('pt_q2a_ad_leftside_level',qa_post_text('pt_q2a_ad_leftside_level'));
+			
+			qa_opt('pt_q2a_ad_hide_categories', qa_post_text('pt_q2a_ad_hide_categories'));   
 			qa_opt('pt_q2a_ad_hideaskpage',qa_post_text('pt_q2a_ad_hideaskpage'));
 			
 			$ok = qa_lang('admin/options_saved');
@@ -67,6 +73,7 @@ class pt_qa_simple_admanager {
 			'pt_q2a_ad_after_all_answers_code_display' => 'pt_q2a_ad_after_all_answers',
 			'pt_q2a_ad_after_all_questions_code_display' => 'pt_q2a_ad_after_all_questions',
 			'pt_q2a_ad_sidebar_code_display' => 'pt_q2a_ad_sidebar',
+			'pt_q2a_ad_leftside_code_display' => 'pt_q2a_ad_leftside',
 				
 		));
 
@@ -87,6 +94,13 @@ class pt_qa_simple_admanager {
 			'value' => qa_opt('pt_q2a_ad_hideaskpage'),
 			'tags' => 'NAME="pt_q2a_ad_hideaskpage" ID="pt_q2a_ad_hideaskpage"',
 		);
+		$fields[] = array(
+			'id' => 'pt_q2a_ad_hide_categories',
+			'label' => 'Enter the categories for which no Ad will be shown',
+			'type' => 'text',
+			'value' => qa_opt('pt_q2a_ad_hide_categories'),
+			'tags' => 'NAME="pt_q2a_ad_hide_categories"',
+            );
 
 		$fields[] = array(
 			'label' => 'Ad after Question',
@@ -222,6 +236,28 @@ class pt_qa_simple_admanager {
 			'type' => 'select',
 			'value' => @$showoptions[qa_opt('pt_q2a_ad_sidebar_level')],
 			'tags' => 'NAME="pt_q2a_ad_sidebar_level" ID="pt_q2a_ad_sidebar_level"',
+			'options' => $showoptions
+		);
+		$fields[] = array(
+			'label' => 'Ad on left Side',
+			'type' => 'checkbox',
+			'value' => qa_opt('pt_q2a_ad_leftside'),
+			'tags' => 'NAME="pt_q2a_ad_leftside" ID="pt_q2a_ad_leftside"',
+		);
+		
+		$fields[] = array(
+			'id' => 'pt_q2a_ad_leftside_code_display',
+			'label' => 'Paste HTML Ad Code in this box(try 160x90 text/link ad)',
+			'type' => 'textarea',
+			'value' => qa_opt('pt_q2a_ad_leftside_codebox'),
+			'tags' => 'NAME="pt_q2a_ad_leftside_code_field"',
+            'rows' => 2,
+		);		
+		$fields[] = array(
+			'label' => 'Hide This Ad for the below User Levels and Above',
+			'type' => 'select',
+			'value' => @$showoptions[qa_opt('pt_q2a_ad_leftside_level')],
+			'tags' => 'NAME="pt_q2a_ad_leftside_level" ID="pt_q2a_ad_leftside_level"',
 			'options' => $showoptions
 		);
 

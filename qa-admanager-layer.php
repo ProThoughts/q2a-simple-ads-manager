@@ -43,13 +43,13 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	//ad after menu navigation bar, just after horizontal line.		
 	function header()
 	{
+		if($this -> template === 'ask' && qa_opt('pt_q2a_ad_hideaskpage'))
+			return;
+		$user_level = qa_get_logged_in_level();
 		if (qa_opt('pt_q2a_ad_leftside') && $user_level < qa_opt('pt_q2a_ad_leftside_level')) 
 		$this->adoutput('<div class = "sidebar-ad">'.qa_opt("pt_q2a_ad_leftside_codebox"). '</div>');
 		qa_html_theme_base::header();
 		require_once QA_INCLUDE_DIR.'app/posts.php';
-		if($this -> template === 'ask' && qa_opt('pt_q2a_ad_hideaskpage'))
-			return;
-		$user_level = qa_get_logged_in_level();
 		if (qa_opt('pt_q2a_ad_after_menu_bar') && $user_level < qa_opt('pt_q2a_ad_after_menu_bar_level')) 
 		{
 			$this->adoutput(qa_opt('pt_q2a_ad_after_menu_bar_codebox'));

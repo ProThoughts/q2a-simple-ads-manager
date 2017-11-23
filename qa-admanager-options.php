@@ -12,7 +12,7 @@ class pt_qa_simple_admanager {
 	function option_default($option) {
 
                 switch($option) {
-			case 'pt_q2a_ad_css': return '.sidebar-ad{position:fixed; left:0; vertical-align: top; height: 400px; width:150px;} .adcode{margin:10px;@media only screen and (max-width: 992px) {.sidebar-ad{display:none!important;}  }';
+			case 'pt_q2a_ad_css': return '.sidebar-ad{position:fixed; left:0; vertical-align: top; height: 400px; width:150px;} .adcode{margin:10px;}@media only screen and (max-width: 1499px) {.sidebar-ad{display:none;}  }';
 			case 'pt_q2a_ad_after_question_level':
 			case 'pt_q2a_ad_before_question_level':
 			case 'pt_q2a_ad_after_menu_bar_level':

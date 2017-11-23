@@ -49,6 +49,10 @@ Change Log
 **v1.4**
 * Added option to have ad after first answer
 
+**v1.3**
+* Added option to hide each ad unit based on user levels
+* Added option to hide ad on Ask page
+
 **v1.2**
 * Added metadata.json.
 * Code formatted.

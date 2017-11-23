@@ -12,11 +12,15 @@ class pt_qa_simple_admanager {
 	function option_default($option) {
 
                 switch($option) {
+			case 'pt_q2a_ad_css': return '.sidebar-ad{position:fixed; left:0; vertical-align: top; height: 400px; width:150px;} .adcode{margin:10px;@media only screen and (max-width: 992px) {.sidebar-ad{display:none!important;}  }';
 			case 'pt_q2a_ad_after_question_level':
+			case 'pt_q2a_ad_before_question_level':
 			case 'pt_q2a_ad_after_menu_bar_level':
 			case 'pt_q2a_ad_after_all_answers_level':
 			case 'pt_q2a_ad_after_all_questions_level':
+			case 'pt_q2a_ad_before_all_questions_level':
 			case 'pt_q2a_ad_sidebar_level':
+			case 'pt_q2a_ad_leftside_level':
                                 return QA_USER_LEVEL_SUPER+1;
 			case 'pt_q2a_ad_hideaskpage': return 1;
                         default:
@@ -32,9 +36,15 @@ class pt_qa_simple_admanager {
 		$ok = null;
 		if (qa_clicked('pt_q2a_simple_ads_manager_save_button')) 
 		{
+			qa_opt('pt_q2a_ad_css', qa_post_text('pt_q2a_ad_css'));  
+ 
 			qa_opt('pt_q2a_ad_after_question',(bool)qa_post_text('pt_q2a_ad_after_question'));
 			qa_opt('pt_q2a_ad_after_question_codebox', qa_post_text('pt_q2a_ad_after_question_code_field'));   
 			qa_opt('pt_q2a_ad_after_question_level',qa_post_text('pt_q2a_ad_after_question_level'));
+			
+			qa_opt('pt_q2a_ad_before_question',(bool)qa_post_text('pt_q2a_ad_before_question'));
+			qa_opt('pt_q2a_ad_before_question_codebox', qa_post_text('pt_q2a_ad_before_question_code_field'));   
+			qa_opt('pt_q2a_ad_before_question_level',qa_post_text('pt_q2a_ad_before_question_level'));
 			
 			qa_opt('pt_q2a_ad_after_menu_bar',(bool)qa_post_text('pt_q2a_ad_after_menu_bar'));
 			qa_opt('pt_q2a_ad_after_menu_bar_codebox', qa_post_text('pt_q2a_ad_after_menu_bar_code_field'));   
@@ -43,6 +53,7 @@ class pt_qa_simple_admanager {
 			qa_opt('pt_q2a_ad_after_all_answers',(bool)qa_post_text('pt_q2a_ad_after_all_answers'));
 			qa_opt('pt_q2a_ad_after_all_answers_codebox', qa_post_text('pt_q2a_ad_after_all_answers_code_field'));   
 			qa_opt('pt_q2a_ad_after_all_answers_level',qa_post_text('pt_q2a_ad_after_all_answers_level'));
+
 			qa_opt('pt_q2a_ad_after_first_answer',(bool)qa_post_text('pt_q2a_ad_after_first_answer'));
 			qa_opt('pt_q2a_ad_after_first_answer_codebox', qa_post_text('pt_q2a_ad_after_first_answer_code_field'));   
 			qa_opt('pt_q2a_ad_after_first_answer_level',qa_post_text('pt_q2a_ad_after_first_answer_level'));
@@ -50,6 +61,10 @@ class pt_qa_simple_admanager {
 			qa_opt('pt_q2a_ad_after_all_questions',(bool)qa_post_text('pt_q2a_ad_after_all_questions'));
 			qa_opt('pt_q2a_ad_after_all_questions_codebox', qa_post_text('pt_q2a_ad_after_all_questions_code_field'));   
 			qa_opt('pt_q2a_ad_after_all_questions_level',qa_post_text('pt_q2a_ad_after_all_questions_level'));
+			
+			qa_opt('pt_q2a_ad_before_all_questions',(bool)qa_post_text('pt_q2a_ad_before_all_questions'));
+			qa_opt('pt_q2a_ad_before_all_questions_codebox', qa_post_text('pt_q2a_ad_before_all_questions_code_field'));   
+			qa_opt('pt_q2a_ad_before_all_questions_level',qa_post_text('pt_q2a_ad_before_all_questions_level'));
 			
 			qa_opt('pt_q2a_ad_sidebar',(bool)qa_post_text('pt_q2a_ad_sidebar'));
 			qa_opt('pt_q2a_ad_sidebar_codebox', qa_post_text('pt_q2a_ad_sidebar_code_field'));   
@@ -68,9 +83,12 @@ class pt_qa_simple_admanager {
         
 		qa_set_display_rules($qa_content, array(
 				
-			'pt_q2a_ad_after_question_code_display' => 'pt_q2a_ad_after_question',
 			'pt_q2a_ad_after_menu_bar_code_display' => 'pt_q2a_ad_after_menu_bar',
+			'pt_q2a_ad_before_question_code_display' => 'pt_q2a_ad_before_question',
+			'pt_q2a_ad_after_question_code_display' => 'pt_q2a_ad_after_question',
+			'pt_q2a_ad_after_first_answer_code_display' => 'pt_q2a_ad_after_first_answer',
 			'pt_q2a_ad_after_all_answers_code_display' => 'pt_q2a_ad_after_all_answers',
+			'pt_q2a_ad_before_all_questions_code_display' => 'pt_q2a_ad_before_all_questions',
 			'pt_q2a_ad_after_all_questions_code_display' => 'pt_q2a_ad_after_all_questions',
 			'pt_q2a_ad_sidebar_code_display' => 'pt_q2a_ad_sidebar',
 			'pt_q2a_ad_leftside_code_display' => 'pt_q2a_ad_leftside',
@@ -89,6 +107,15 @@ class pt_qa_simple_admanager {
 
 		$fields = array();
 		$fields[] = array(
+			'id' => 'pt_q2a_ad_css',
+			'label' => 'CSS code',
+			'type' => 'textarea',
+			'value' => qa_opt('pt_q2a_ad_css'),
+			'tags' => 'NAME="pt_q2a_ad_css"',
+            'rows' => 2,
+		);		
+		
+		$fields[] = array(
 			'label' => 'Hide Ads on Ask Page (makes reload faster)',
 			'type' => 'checkbox',
 			'value' => qa_opt('pt_q2a_ad_hideaskpage'),
@@ -101,6 +128,50 @@ class pt_qa_simple_admanager {
 			'value' => qa_opt('pt_q2a_ad_hide_categories'),
 			'tags' => 'NAME="pt_q2a_ad_hide_categories"',
             );
+		$fields[] = array(
+			'label' => 'Ad after Menu Bar',
+			'type' => 'checkbox',
+			'value' => qa_opt('pt_q2a_ad_after_menu_bar'),
+			'tags' => 'NAME="pt_q2a_ad_after_menu_bar" ID="pt_q2a_ad_after_menu_bar"',
+		);
+		
+		$fields[] = array(
+			'id' => 'pt_q2a_ad_after_menu_bar_code_display',
+			'label' => 'Paste HTML Ad Code in this box(try 728x15 text/link ad)',
+			'type' => 'textarea',
+			'value' => qa_opt('pt_q2a_ad_after_menu_bar_codebox'),
+			'tags' => 'NAME="pt_q2a_ad_after_menu_bar_code_field"',
+            'rows' => 2,
+		);		
+		$fields[] = array(
+			'label' => 'Hide This Ad for the below User Levels and Above',
+			'type' => 'select',
+			'value' => @$showoptions[qa_opt('pt_q2a_ad_after_menu_bar_level')],
+			'tags' => 'NAME="pt_q2a_ad_after_menu_bar_level" ID="pt_q2a_ad_after_menu_bar_level"',
+			'options' => $showoptions
+		);
+
+		$fields[] = array(
+			'label' => 'Ad before Question',
+			'type' => 'checkbox',
+			'value' => qa_opt('pt_q2a_ad_before_question'),
+			'tags' => 'NAME="pt_q2a_ad_before_question" ID="pt_q2a_ad_before_question"',
+		);
+		$fields[] = array(
+			'id' => 'pt_q2a_ad_before_question_code_display',
+			'label' => 'Paste HTML Ad Code in this box(try 728x90 banner ad)',
+			'type' => 'textarea',
+			'value' => qa_opt('pt_q2a_ad_before_question_codebox'),
+			'tags' => 'NAME="pt_q2a_ad_before_question_code_field"',
+            'rows' => 2,
+		);
+		$fields[] = array(
+			'label' => 'Hide This Ad for the below User Levels and Above',
+			'type' => 'select',
+			'value' => @$showoptions[qa_opt('pt_q2a_ad_before_question_level')],
+			'tags' => 'NAME="pt_q2a_ad_before_question_level" ID="pt_q2a_ad_before_question_level"',
+			'options' => $showoptions
+		);
 
 		$fields[] = array(
 			'label' => 'Ad after Question',
@@ -125,28 +196,6 @@ class pt_qa_simple_admanager {
 			'options' => $showoptions
 		);
 
-		$fields[] = array(
-			'label' => 'Ad after Menu Bar',
-			'type' => 'checkbox',
-			'value' => qa_opt('pt_q2a_ad_after_menu_bar'),
-			'tags' => 'NAME="pt_q2a_ad_after_menu_bar" ID="pt_q2a_ad_after_menu_bar"',
-		);
-		
-		$fields[] = array(
-			'id' => 'pt_q2a_ad_after_menu_bar_code_display',
-			'label' => 'Paste HTML Ad Code in this box(try 728x15 text/link ad)',
-			'type' => 'textarea',
-			'value' => qa_opt('pt_q2a_ad_after_menu_bar_codebox'),
-			'tags' => 'NAME="pt_q2a_ad_after_menu_bar_code_field"',
-            'rows' => 2,
-		);		
-		$fields[] = array(
-			'label' => 'Hide This Ad for the below User Levels and Above',
-			'type' => 'select',
-			'value' => @$showoptions[qa_opt('pt_q2a_ad_after_menu_bar_level')],
-			'tags' => 'NAME="pt_q2a_ad_after_menu_bar_level" ID="pt_q2a_ad_after_menu_bar_level"',
-			'options' => $showoptions
-		);
 
 		$fields[] = array(
 			'label' => 'Ad after All Answers',
@@ -193,6 +242,29 @@ class pt_qa_simple_admanager {
 			'options' => $showoptions
 		);
 		
+		$fields[] = array(
+			'label' => 'Ad before All Questions',
+			'type' => 'checkbox',
+			'value' => qa_opt('pt_q2a_ad_before_all_questions'),
+			'tags' => 'NAME="pt_q2a_ad_before_all_questions" ID="pt_q2a_ad_before_all_questions"',
+		);
+		
+		$fields[] = array(
+			'id' => 'pt_q2a_ad_before_all_questions_code_display',
+			'label' => 'Paste HTML Ad Code in this box(try 728x90 banner ad)',
+			'type' => 'textarea',
+			'value' => qa_opt('pt_q2a_ad_before_all_questions_codebox'),
+			'tags' => 'NAME="pt_q2a_ad_before_all_questions_code_field"',
+            'rows' => 2,
+		);		
+		$fields[] = array(
+			'label' => 'Hide This Ad for the below User Levels and Above',
+			'type' => 'select',
+			'value' => @$showoptions[qa_opt('pt_q2a_ad_before_all_questions_level')],
+			'tags' => 'NAME="pt_q2a_ad_before_all_questions_level" ID="pt_q2a_ad_before_all_questions_level"',
+			'options' => $showoptions
+		);
+
 		$fields[] = array(
 			'label' => 'Ad after All Questions',
 			'type' => 'checkbox',

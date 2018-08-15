@@ -38,13 +38,19 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	function head_css()
 	{
 		$this->output('<style type="text/css">'.qa_opt('pt_q2a_ad_css').' </style>');
+		$user_level = qa_get_logged_in_level();
+		if (qa_opt('pt_q2a_ad_autoad') && $user_level < qa_opt('pt_q2a_ad_autoad_level')) 
+		$this->adoutput(qa_opt("pt_q2a_ad_autoad_codebox"));
 		qa_html_theme_base::head_css();
 	}
 	//ad after menu navigation bar, just after horizontal line.		
 	function header()
 	{
 		if($this -> template === 'ask' && qa_opt('pt_q2a_ad_hideaskpage'))
+		{
+			qa_html_theme_base::header();
 			return;
+		}
 		$user_level = qa_get_logged_in_level();
 		if (qa_opt('pt_q2a_ad_leftside') && $user_level < qa_opt('pt_q2a_ad_leftside_level')) 
 		$this->adoutput('<div class = "sidebar-ad">'.qa_opt("pt_q2a_ad_leftside_codebox"). '</div>');

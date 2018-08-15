@@ -21,6 +21,7 @@ class pt_qa_simple_admanager {
 			case 'pt_q2a_ad_before_all_questions_level':
 			case 'pt_q2a_ad_sidebar_level':
 			case 'pt_q2a_ad_leftside_level':
+			case 'pt_q2a_ad_autoad_level':
                                 return QA_USER_LEVEL_SUPER+1;
 			case 'pt_q2a_ad_hideaskpage': return 1;
                         default:
@@ -75,8 +76,12 @@ class pt_qa_simple_admanager {
 			qa_opt('pt_q2a_ad_leftside_codebox', qa_post_text('pt_q2a_ad_leftside_code_field'));   
 			qa_opt('pt_q2a_ad_leftside_level',qa_post_text('pt_q2a_ad_leftside_level'));
 			
+			qa_opt('pt_q2a_ad_autoad',(bool)qa_post_text('pt_q2a_ad_autoad'));
+			qa_opt('pt_q2a_ad_autoad_codebox', qa_post_text('pt_q2a_ad_autoad_code_field'));   
+			qa_opt('pt_q2a_ad_autoad_level',qa_post_text('pt_q2a_ad_autoad_level'));
+			
 			qa_opt('pt_q2a_ad_hide_categories', qa_post_text('pt_q2a_ad_hide_categories'));   
-			qa_opt('pt_q2a_ad_hideaskpage',qa_post_text('pt_q2a_ad_hideaskpage'));
+			qa_opt('pt_q2a_ad_hideaskpage',(bool)qa_post_text('pt_q2a_ad_hideaskpage'));
 			
 			$ok = qa_lang('admin/options_saved');
 		}
@@ -92,6 +97,7 @@ class pt_qa_simple_admanager {
 			'pt_q2a_ad_after_all_questions_code_display' => 'pt_q2a_ad_after_all_questions',
 			'pt_q2a_ad_sidebar_code_display' => 'pt_q2a_ad_sidebar',
 			'pt_q2a_ad_leftside_code_display' => 'pt_q2a_ad_leftside',
+			'pt_q2a_ad_autoad_code_display' => 'pt_q2a_ad_autoad',
 				
 		));
 
@@ -330,6 +336,28 @@ class pt_qa_simple_admanager {
 			'type' => 'select',
 			'value' => @$showoptions[qa_opt('pt_q2a_ad_leftside_level')],
 			'tags' => 'NAME="pt_q2a_ad_leftside_level" ID="pt_q2a_ad_leftside_level"',
+			'options' => $showoptions
+		);
+		$fields[] = array(
+			'label' => 'Google AutoAd',
+			'type' => 'checkbox',
+			'value' => qa_opt('pt_q2a_ad_autoad'),
+			'tags' => 'NAME="pt_q2a_ad_autoad" ID="pt_q2a_ad_autoad"',
+		);
+		
+		$fields[] = array(
+			'id' => 'pt_q2a_ad_autoad_code_display',
+			'label' => 'Paste HTML Ad Code in this box',
+			'type' => 'textarea',
+			'value' => qa_opt('pt_q2a_ad_autoad_codebox'),
+			'tags' => 'NAME="pt_q2a_ad_autoad_code_field"',
+            'rows' => 2,
+		);		
+		$fields[] = array(
+			'label' => 'Hide This Ad for the below User Levels and Above',
+			'type' => 'select',
+			'value' => @$showoptions[qa_opt('pt_q2a_ad_autoad_level')],
+			'tags' => 'NAME="pt_q2a_ad_autoad_level" ID="pt_q2a_ad_autoad_level"',
 			'options' => $showoptions
 		);
 

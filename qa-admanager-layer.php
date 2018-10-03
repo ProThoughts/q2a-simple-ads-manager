@@ -22,12 +22,12 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	//ad after question, just before answers
 	function q_view($q_view)
 	{
+		$user_level = qa_get_logged_in_level();
 		if (qa_opt('pt_q2a_ad_before_question') && $user_level <  qa_opt('pt_q2a_ad_before_question_level')) 
 		{
 			$this->adoutput(qa_opt('pt_q2a_ad_after_question_codebox'));
 		}                     
 		qa_html_theme_base::q_view($q_view);
-		$user_level = qa_get_logged_in_level();
 		if (qa_opt('pt_q2a_ad_after_question') && $user_level <  qa_opt('pt_q2a_ad_after_question_level')) 
 		{
 			$this->adoutput(qa_opt('pt_q2a_ad_after_question_codebox'));

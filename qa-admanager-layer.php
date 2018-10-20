@@ -6,18 +6,23 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	{
 		if($this->disabledcategory()) return;
 		$this->output ('<div class="adcode">'.$adcode.'</div>');
-		
+
 	}
 
 	function disabledcategory()
 	{
-		if($this->template !== 'question') return;
-		$categoryid = $this->content['q_view']['raw']['categoryid'];
-		$cats = explode(",",qa_opt('pt_q2a_ad_hide_categories'));
-		if(in_array($categoryid, $cats))
-			return true;
+
+		if($this->template === 'register' || $this -> template === 'login') return true;
+		//if($this->template !== 'question' && $this->template !== 'questions' && $this->template !=='custom' && qa_is_logged_in()) return true;
+		if(isset($this->content['q_view']))
+		{
+			$categoryid = $this->content['q_view']['raw']['categoryid'];
+			$cats = explode(",",qa_opt('pt_q2a_ad_hide_categories'));
+			if(in_array($categoryid, $cats))
+				return true;
+		}
 		return false;
-				
+
 	}
 	//ad after question, just before answers
 	function q_view($q_view)
@@ -40,7 +45,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 		$this->output('<style type="text/css">'.qa_opt('pt_q2a_ad_css').' </style>');
 		$user_level = qa_get_logged_in_level();
 		if (qa_opt('pt_q2a_ad_autoad') && $user_level < qa_opt('pt_q2a_ad_autoad_level')) 
-		$this->adoutput(qa_opt("pt_q2a_ad_autoad_codebox"));
+			$this->adoutput(qa_opt("pt_q2a_ad_autoad_codebox"));
 		qa_html_theme_base::head_css();
 	}
 	//ad after menu navigation bar, just after horizontal line.		
@@ -53,7 +58,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 		}
 		$user_level = qa_get_logged_in_level();
 		if (qa_opt('pt_q2a_ad_leftside') && $user_level < qa_opt('pt_q2a_ad_leftside_level')) 
-		$this->adoutput('<div class = "sidebar-ad">'.qa_opt("pt_q2a_ad_leftside_codebox"). '</div>');
+			$this->adoutput('<div class = "sidebar-ad">'.qa_opt("pt_q2a_ad_leftside_codebox"). '</div>');
 		qa_html_theme_base::header();
 		require_once QA_INCLUDE_DIR.'app/posts.php';
 		if (qa_opt('pt_q2a_ad_after_menu_bar') && $user_level < qa_opt('pt_q2a_ad_after_menu_bar_level')) 

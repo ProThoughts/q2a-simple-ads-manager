@@ -1,5 +1,6 @@
 Q2A Simple Ads Manager
 ======================
+[![Works with](https://img.shields.io/badge/Works%20with-Q2A_v1.8.2-green.svg?style=flat)](https://github.com/q2a/question2answer/releases)
 
 Plugin Version
 --------------

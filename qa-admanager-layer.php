@@ -5,6 +5,13 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	function adoutput($adcode)
 	{
 		if($this->disabledcategory()) return;
+		$userid = qa_get_logged_in_userid();
+		if($userid && function_exists("get_verify_status") && qa_opt('verifyplus_request'))
+		{
+			$status = get_verify_status($userid);
+			if($status >= 2) return;
+
+		}
 		$this->output ('<div class="adcode">'.$adcode.'</div>');
 
 	}
@@ -12,7 +19,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	function disabledcategory()
 	{
 
-		if($this->template === 'register' || $this -> template === 'login') return true;
+		if(($this->template === 'register') || ($this -> template === 'login')) return true;
 		//if($this->template !== 'question' && $this->template !== 'questions' && $this->template !=='custom' && qa_is_logged_in()) return true;
 		if(isset($this->content['q_view']))
 		{
@@ -40,12 +47,17 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	}
 	// End of q_view()
 
+	function head_script()
+	{
+		qa_html_theme_base::head_script();
+		$user_level = qa_get_logged_in_level();
+		if (qa_opt('pt_q2a_ad_autoad') && ($user_level < qa_opt('pt_q2a_ad_autoad_level'))) 
+		if(!$this->disabledcategory())
+			$this->output(qa_opt("pt_q2a_ad_autoad_codebox"));
+	}
 	function head_css()
 	{
 		$this->output('<style type="text/css">'.qa_opt('pt_q2a_ad_css').' </style>');
-		$user_level = qa_get_logged_in_level();
-		if (qa_opt('pt_q2a_ad_autoad') && $user_level < qa_opt('pt_q2a_ad_autoad_level')) 
-			$this->adoutput(qa_opt("pt_q2a_ad_autoad_codebox"));
 		qa_html_theme_base::head_css();
 	}
 	//ad after menu navigation bar, just after horizontal line.		

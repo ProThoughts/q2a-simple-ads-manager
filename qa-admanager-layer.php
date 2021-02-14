@@ -112,21 +112,26 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	}
 	// end of a_list()
 
-	//ad after all questions
-	function q_list_and_form($q_list)
-	{
+        //ad before and after all questions
+        function q_list_and_form($q_list)
+        {
+                if($this -> template === 'ask' && qa_opt('pt_q2a_ad_hideaskpage'))
+                        return;
+		
+                $user_level = qa_get_logged_in_level();
+		
+                if (qa_opt('pt_q2a_ad_before_all_questions') && $user_level < qa_opt('pt_q2a_ad_before_all_questions_level'))
+                {
+                       $this->adoutput(qa_opt('pt_q2a_ad_before_all_questions_codebox'));
+                }
+		
+                qa_html_theme_base::q_list_and_form($q_list);
 
-		$this->adoutput(qa_opt('pt_q2a_ad_before_all_questions_codebox'));
-		qa_html_theme_base::q_list_and_form($q_list);
-		if($this -> template === 'ask' && qa_opt('pt_q2a_ad_hideaskpage'))
-			return;
-
-		$user_level = qa_get_logged_in_level();
-		if (qa_opt('pt_q2a_ad_after_all_questions') && $user_level < qa_opt('pt_q2a_ad_after_all_questions_level')) 
-		{
-			$this->adoutput(qa_opt('pt_q2a_ad_after_all_questions_codebox'));
-		}                     
-	}
+                if (qa_opt('pt_q2a_ad_after_all_questions') && $user_level < qa_opt('pt_q2a_ad_after_all_questions_level'))
+                {
+                        $this->adoutput(qa_opt('pt_q2a_ad_after_all_questions_codebox'));
+                }
+        }
 	// end of q_list_and_form()		
 
 	function sidebar()

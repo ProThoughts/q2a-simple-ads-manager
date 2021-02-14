@@ -1,12 +1,12 @@
 {
 	"name": "Simple Ads Manager",
-	"uri": "https://github.com/ProThoughts/q2a-simple-ads-manager",
+	"uri": "https://github.com/GATEOverflow/q2a-simple-ads-manager",
 	"description": "Manage HTML ads",
-	"version": "1.2",
-	"date": "2016-10-23",
-	"author": "ProThoughts",
-	"author_uri": "http://prothoughts.com",
+	"version": "1.9",
+	"date": "2021-02-14",
+	"author": "ProThoughts modified by Arjun",
+	"author_uri": "http://gateoverflow.in/user/Arjun",
 	"license": "GPLv2",
-	"update_uri": "https://raw.githubusercontent.com/ProThoughts/q2a-simple-ads-manager/master/metadata.json",
-	"min_q2a": "1.6"
+	"update_uri": "https://raw.githubusercontent.com/arjunsuresh/q2a-simple-ads-manager/master/metadata.json",
+	"load_order": "after_db_init"
 }

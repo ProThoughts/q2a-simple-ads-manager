@@ -4,7 +4,7 @@ Q2A Simple Ads Manager
 
 Plugin Version
 --------------
-- v1.2
+- v1.5
 
 This plugin will allow you to add advertisements in the below listed spots. You can use Google adsense or any HTML ad code. 
 
@@ -12,10 +12,12 @@ Features
 --------
 You can place ads at below 5 spots
 - ad after menu navigation bar, just after horizontal line.
-- ad after question, just before answers.
+- ad before/after question, just before answers.
 - ad after all answers, just before related questions.
-- ad after all questions.
-- ad in sidebar
+- ad after first answer (will hide the ad after all answers in case only one answer is there)
+- ad before/after all questions.
+- ad in sidebar.
+- ad on left end of screen on large screens.
 
 Installation Guide
 ------------------
@@ -40,6 +42,18 @@ Demo
 
 Change Log
 ----------
+**v1.5**
+* Added option to have ad after before question and question list
+* Aded option to have ad on the left end of window on large screens
+* Added option to hide all ads on certain category of questions
+
+**v1.4**
+* Added option to have ad after first answer
+
+**v1.3**
+* Added option to hide each ad unit based on user levels
+* Added option to hide ad on Ask page
+
 **v1.2**
 * Added metadata.json.
 * Code formatted.

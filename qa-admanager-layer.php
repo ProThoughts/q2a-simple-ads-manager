@@ -2,17 +2,22 @@
 
 
 class qa_html_theme_layer extends qa_html_theme_base {
-	function adoutput($adcode)
-	{
-		if($this->disabledcategory()) return;
+	function showads() {
+		if($this->disabledcategory()) return false;
 		$userid = qa_get_logged_in_userid();
 		if($userid && function_exists("get_verify_status") && qa_opt('verifyplus_request'))
 		{
 			$status = get_verify_status($userid);
-			if($status >= 2) return;
-
+			if($status >= 2) return false;
 		}
-		$this->output ('<div class="adcode">'.$adcode.'</div>');
+		return true;
+	}
+
+	function adoutput($adcode)
+	{
+		if($this -> showads()) {
+		    $this->output ('<div class="adcode">'.$adcode.'</div>');
+		}
 
 	}
 
@@ -52,8 +57,9 @@ class qa_html_theme_layer extends qa_html_theme_base {
 		qa_html_theme_base::head_script();
 		$user_level = qa_get_logged_in_level();
 		if (qa_opt('pt_q2a_ad_autoad') && ($user_level < qa_opt('pt_q2a_ad_autoad_level'))) 
-		if(!$this->disabledcategory())
+		if($this -> showads()) {
 			$this->output(qa_opt("pt_q2a_ad_autoad_codebox"));
+		}
 	}
 	function head_css()
 	{

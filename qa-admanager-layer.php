@@ -24,8 +24,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	function disabledcategory()
 	{
 
-		if(($this->template === 'register') || ($this -> template === 'login')) return true;
-		//if($this->template !== 'question' && $this->template !== 'questions' && $this->template !=='custom' && qa_is_logged_in()) return true;
+		if(($this->template === 'register') || ($this -> template === 'login') || ($this -> template === 'not-found')) return true;
 		if(isset($this->content['q_view']))
 		{
 			$categoryid = $this->content['q_view']['raw']['categoryid'];
